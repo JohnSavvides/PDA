@@ -25,15 +25,20 @@ public class PDA
         Scanner scanner = new Scanner (System.in);
         int age;
         int LOWER_BOUND = 14;
-        while (true) {
+        boolean shouldContinue = true;
+        while (shouldContinue) {
             System.out.println("How old are you?");
+            System.out.println("If you want to quit, type in 0");
             try {
                 age = scanner.nextInt();
-                if (age/2+7 < LOWER_BOUND) {
+                if (age == 0) {
+                    shouldContinue = false;
+                } else if (age/2+7 < LOWER_BOUND) {
                     System.out.println(age+ " is too low!");
                 } else {
-                    getYoungerAge(age); getOlderAge(age);
+                    getYoungerAge_getOlderAge(age);
                 }
+                
             } catch (InputMismatchException error) {
                 scanner.next();
                 System.out.println("Please enter an integer");
@@ -41,16 +46,14 @@ public class PDA
         }
     }
 
-    public void getYoungerAge () {
-        Scanner scanner = new Scanner (System.in);
-        age = scanner.nextInt();
-        System.out.println(age/2+7);
+    public void getYoungerAge_getOlderAge (int age) {
+        System.out.println(Math.ceil(age/2+7));
+        System.out.println(Math.floor((age-7)*2));
     }
-
-    public void getOlderAge () {
-        Scanner scanner = new Scanner (System.in);
-        age = scanner.nextInt();
-        System.out.println((age-7)*2);
+    
+    public static void main (String[] args) {
+        PDA pda = new PDA();
+        pda.runEventLoop();
     }
 }
 /**
