@@ -23,7 +23,7 @@ public class PDA
      */
     public void runEventLoop() {
         Scanner scanner = new Scanner (System.in);
-        int age;
+        double age;
         int LOWER_BOUND = 14;
         boolean shouldContinue = true;
         while (shouldContinue) {
@@ -46,7 +46,7 @@ public class PDA
         }
     }
 
-    public void getYoungerAge_getOlderAge (int age) {
+    public void getYoungerAge_getOlderAge (double age) {
         System.out.println(Math.ceil(age/2+7));
         System.out.println(Math.floor((age-7)*2));
     }
